@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\libs\FileCacher.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4f4c80862d834ea457094085003513b642da25f5">
+        <dex dex="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\build\intermediates\transforms\dex\debug\folders\1000\2\FileCacher_c7fb70abdee1310db0402982ca9f14dccba72c25\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_dbe6c9c1e79d99033df7bf672ed459c2de9d6ef2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="623f529302206e93a261fab396ec561d26a51cb1">
+        <dex dex="C:\Users\Anton\AndroidStudioProjects\ShowcaseTUPAPP\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_64f15f9f1b901005af1b72e557b0c87bf7482b7a\classes.dex" />
+    </item>
+
+</items>
