@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_color"
+    android:weightSum="1"
+    >
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/card_margin"
+                android:layout_weight=".8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mg_subject"
+                        android:id="@+id/tvsb"
+                        android:layout_marginStart="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ersText"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ms_room"
+                        android:id="@+id/tvrm"
+                        android:textAlignment="center"
+                        android:layout_alignBaseline="@+id/tvsb"
+                        android:layout_alignBottom="@+id/tvsb"
+                        android:layout_centerHorizontal="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/ersText"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ms_daytime"
+                        android:id="@+id/tvdt"
+                        android:layout_alignBaseline="@+id/tvrm"
+                        android:layout_alignBottom="@+id/tvrm"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ersText"
+                        android:layout_marginStart="500dp"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#c0c0c0"/>
+
+                    <ListView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lvSchedules"
+                        />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight=".1"
+        android:layout_marginBottom="2dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Alarm Schedule"
+            android:textColor="#fff"
+            android:background="@color/colorDisagree"
+            android:id="@+id/bAdditem"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight=".1">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Calendar"
+            android:textColor="#fff"
+            android:background="@color/colorNeutral"
+            android:id="@+id/trowl"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            />
+    </LinearLayout>
+        </LinearLayout>

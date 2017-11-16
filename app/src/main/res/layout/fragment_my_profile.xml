@@ -1,0 +1,426 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.happymeal.tupapp.MyProfileFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/card_margin">
+
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PERSONAL INFORMATION"
+                            android:textStyle="bold"
+                            android:textColor="#bd2038"
+                            android:layout_centerHorizontal="true"
+                            />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#c0c0c0"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pName" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Profile Name"
+                            android:textColor="#000"
+                            android:id="@+id/tvpName"
+                            android:layout_alignBaseline="@+id/pName"
+                            android:layout_alignBottom="@+id/pName"
+                            android:layout_toEndOf="@+id/pName"
+                            android:layout_marginStart="34dp" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth Date"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pBDate" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth Date"
+                            android:textColor="#000"
+                            android:id="@+id/tvpBdate"
+                            android:layout_alignBaseline="@+id/pBDate"
+                            android:layout_alignBottom="@+id/pBDate"
+                            android:layout_toEndOf="@+id/pBDate"
+                            android:layout_marginStart="10dp" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth Place"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pBPlace" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth Place"
+                            android:textColor="#000"
+                            android:id="@+id/tvpBPlace"
+                            android:layout_alignBaseline="@+id/pBPlace"
+                            android:layout_alignBottom="@+id/pBPlace"
+                            android:layout_toEndOf="@+id/pBPlace"
+                            android:layout_marginStart="10dp" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pAddress" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:textColor="#000"
+                            android:id="@+id/tvpAddress"
+                            android:layout_marginStart="25dp"
+                            android:layout_alignBaseline="@+id/pAddress"
+                            android:layout_alignBottom="@+id/pAddress"
+                            android:layout_toEndOf="@+id/pAddress" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Telephone"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pTelephone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Telephone"
+                            android:textColor="#000"
+                            android:id="@+id/tvpTelephone"
+                            android:layout_marginStart="10dp"
+                            android:layout_alignBaseline="@+id/pTelephone"
+                            android:layout_alignBottom="@+id/pTelephone"
+                            android:layout_toEndOf="@+id/pTelephone" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Religion"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pReligion" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Religion"
+                            android:textColor="#000"
+                            android:id="@+id/tvpReligion"
+                            android:layout_marginStart="25dp"
+                            android:layout_alignBaseline="@+id/pReligion"
+                            android:layout_alignBottom="@+id/pReligion"
+                            android:layout_toEndOf="@+id/pReligion" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf"
+                        android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Civil Status"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_margin="15dp"
+                        android:id="@+id/pCStatus" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Civil Status"
+                        android:textColor="#000"
+                        android:id="@+id/tvpCStatus"
+                        android:layout_marginStart="10dp"
+                        android:layout_alignBaseline="@+id/pCStatus"
+                        android:layout_alignBottom="@+id/pCStatus"
+                        android:layout_toEndOf="@+id/pCStatus" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ACCOUNT INFORMATION"
+                            android:textStyle="bold"
+                            android:textColor="#bd2038"
+                            android:layout_centerHorizontal="true"
+                            />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#c0c0c0"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Username"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pUsername" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Username"
+                            android:textColor="#000"
+                            android:id="@+id/tvpUsername"
+                            android:layout_alignBaseline="@+id/pUsername"
+                            android:layout_alignBottom="@+id/pUsername"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Course"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pCourse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Course"
+                            android:textColor="#000"
+                            android:id="@+id/tvpCourse"
+                            android:layout_alignBaseline="@+id/pCourse"
+                            android:layout_alignBottom="@+id/pCourse"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="College"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pCollege" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="COS"
+                            android:textColor="#000"
+                            android:id="@+id/tvpCollege"
+                            android:layout_alignBaseline="@+id/pCollege"
+                            android:layout_alignBottom="@+id/pCollege"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Has Graduated"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pHGrad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#000"
+                            android:id="@+id/tvpHGrad"
+                            android:layout_alignBaseline="@+id/pHGrad"
+                            android:layout_alignBottom="@+id/pHGrad"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#fff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email Address"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pEmail" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email Address"
+                            android:textColor="#000"
+                            android:id="@+id/tvpEmail"
+                            android:layout_alignBaseline="@+id/pEmail"
+                            android:layout_alignBottom="@+id/pEmail"
+                            android:layout_toEndOf="@+id/pEmail"
+                            android:layout_marginStart="16dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#33d3bfbf">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Password"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:layout_margin="15dp"
+                            android:id="@+id/pPassword" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:text="Password"
+                            android:textColor="#000"
+                            android:id="@+id/tvpPassword"
+                            android:layout_marginStart="50dp"
+                            android:layout_alignBaseline="@+id/pPassword"
+                            android:layout_alignBottom="@+id/pPassword"
+                            android:layout_toEndOf="@+id/pPassword" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        </ScrollView>
+
+</FrameLayout>

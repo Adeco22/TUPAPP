@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorAgree">#18ad5b</color>
+    <color name="colorDisagree">#D32F2F</color>
+    <color name="colorNeutral">#2e96da</color>
+    <color name="ersText">#bd2038</color>
+    <color name="White">#FFF</color>
+    <color name="Black">#000</color>
+
+    <color name="album_title">#4c4c4c</color>
+    <color name="viewBg">#f1f5f8</color>
+</resources>

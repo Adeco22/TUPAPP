@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+
+        <item android:title="ERS" >
+        <menu>
+            <item
+                android:id="@+id/nav_my_dashboard"
+                android:icon="@drawable/ic_dashboard"
+                android:title="My Dashboard" />
+            <item
+                android:id="@+id/nav_my_schedule"
+                android:icon="@drawable/ic_action_perm_contact_calendar"
+                android:title="My Schedule"/>
+            <item
+                android:id="@+id/nav_my_grades"
+                android:icon="@drawable/ic_gradez"
+                android:title="My Grades"
+                />
+            <item
+                android:id="@+id/nav_my_account"
+                android:icon="@drawable/ic_profile"
+                android:title="My Account" />
+            <!--<item-->
+            <!--android:id="@+id/nav_eh"-->
+            <!--android:icon="@drawable/cs_ic"-->
+            <!--android:title="Emergency Hotlines"-->
+            <!--android:background="?attr/selectableItemBackground"/>-->
+        </menu>
+        </item>
+        <item android:title="Buy and Sell">
+            <menu>
+                <item
+                    android:id="@+id/nav_ecs"
+                    android:icon="@drawable/ic_action_e_commerce"
+                    android:title="Shop for Items" />
+                <item
+                    android:id="@+id/nav_myi"
+                    android:icon="@drawable/ic_tagz"
+                    android:title="Items I'm Selling" />
+                <!--<item-->
+                <!--android:id="@+id/nav_eh"-->
+                <!--android:icon="@drawable/cs_ic"-->
+                <!--android:title="Emergency Hotlines"-->
+                <!--android:background="?attr/selectableItemBackground"/>-->
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_student_handbook"
+            android:icon="@drawable/ic_action_ic_handbook"
+            android:title="Student Handbook" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_info_icon"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_icon_exit"
+            android:title="Log Out" />
+    </group>
+
+</menu>
