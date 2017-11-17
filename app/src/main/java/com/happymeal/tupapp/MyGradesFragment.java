@@ -286,8 +286,10 @@ public class MyGradesFragment extends Fragment {
                         }
                         grade = jsonObject.getString("grade");
                         units = jsonObject.getString("units");
-                        if(grade.equals("-")){
-                            remark = "-";
+                        if(grade.equals("DRP"))
+                        {
+                            grade = "---";
+                            remark = "DROP";
                         }else {
                             gr = Double.parseDouble(grade);
                             if(gr <= 3.00){

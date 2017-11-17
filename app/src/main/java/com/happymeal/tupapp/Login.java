@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import android.view.KeyEvent;
@@ -95,7 +96,32 @@ public class Login extends AppCompatActivity {
 
 
         // Else initializes the login screen
-        if(ReLogin()) {
+        if(ReLogin())
+        {
+            String name, fname, initial, lname, course;
+            SharedPreferences credentials = getSharedPreferences("credentials",MODE_PRIVATE);
+            SharedPreferences profile = getSharedPreferences("profile",MODE_PRIVATE);
+
+            username = credentials.getString("username","");
+            password = credentials.getString("password","");
+
+            fname = profile.getString("fname","");
+            initial = profile.getString("initial","");
+            lname = profile.getString("lname","");
+
+            name = fname +" "+ initial + "." + " " + lname;
+            course = profile.getString("course","");
+
+            Intent intent = new Intent(getApplicationContext(), Main.class);
+            intent.putExtra("username", username);
+            intent.putExtra("password", password);
+            intent.putExtra("name", name);
+            intent.putExtra("course", course);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
             if (ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -145,38 +171,14 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private boolean ReLogin(){
+    /** Checks if there is an active account logged in*/
+    private boolean ReLogin()
+    {
         SharedPreferences credentials = getSharedPreferences("credentials",MODE_PRIVATE);
         SharedPreferences profile = getSharedPreferences("profile",MODE_PRIVATE);
-        FileCacher<String> profilecache = new FileCacher<>(getApplicationContext(),"profile.txt");
         // Checks if there is a profile logged in
-        if (profilecache.hasCache()) {
-            String[] b;
-            String a="";
-            try {
-                a = profilecache.readCache();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            b = a.split(",");
-            String u = b[0];
-            String p = b[1];
-            String name = b[2] + " " + b[3] + "." + " " + b[4];
-            String course = b[5];
-
-
-            Intent intent = new Intent(getApplicationContext(), Main.class);
-            intent.putExtra("username", u);
-            intent.putExtra("password", p);
-            intent.putExtra("name", name);
-            intent.putExtra("course", course);
-
-            startActivity(intent);
-            finish();
-        }else {
-            return true;
-        }
-        return false;
+        return credentials.contains("username") && !credentials.getString("username", "").equals("")
+                && profile.contains("fname") && !profile.getString("fname", "").equals("") ;
     }
 
     /** Checks for internet connection */
@@ -616,6 +618,7 @@ public class Login extends AppCompatActivity {
             super.onPostExecute(result);
             JSONObject jObject;
             SharedPreferences profile = getSharedPreferences("profile",MODE_PRIVATE);
+            SharedPreferences credentials = getSharedPreferences("credentials",MODE_PRIVATE);
             String name,fname, initial, lname,course;
             if (pd.isShowing())
             {
@@ -627,7 +630,6 @@ public class Login extends AppCompatActivity {
                 JSONArray student = jObject.getJSONArray("student");
 
                 JSONObject st = student.getJSONObject(0);
-                profile.edit().putString("profile",st.toString()).apply();
                 fname = st.getString("fname");
                 initial = st.getString("initial");
                 lname = st.getString("lname");
@@ -638,10 +640,14 @@ public class Login extends AppCompatActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED)
                 {
-                    profile.edit().putString("fname", fname).apply();
-                    profile.edit().putString("initial", initial).apply();
-                    profile.edit().putString("lname", lname).apply();
-                    profile.edit().putString("course", course).apply();
+                    profile.edit().putString("fname", fname)
+                            .putString("initial", initial)
+                            .putString("lname", lname)
+                            .putString("course", course)
+                            .apply();
+                    credentials.edit().putString("username", username)
+                            .putString("password", password)
+                            .apply();
                 }
                 Intent intent = new Intent(getApplicationContext(), Main.class);
                 intent.putExtra("username", username);

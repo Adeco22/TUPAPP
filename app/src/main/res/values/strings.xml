@@ -31,9 +31,25 @@
     <!-- Fragment About Us strings-->
     <string name="au_app_version"><b>Version:</b> 1.04</string>
     <string name="au_app_name_version">TUPAPP v1.04</string>
-    <string name="au_coders"><b>Coders:</b> Jemuel Torres Balingbing\n\t\t\t\t\t (User Interface and Front-End)\n\n\t\t\t\t\t Roberto Gantang Bonifacio Jr,\n\t\t\t\t\t (Server-side Scripting)\n\n\t\t\t\t\t Anthony Matthew Lolarga Deco\n\t\t\t\t\t (Backend and Data Handling)</string>
-    <string name="au_adviser"><b>Adviser:</b> Dir. Renato Butch Bituonan, University\n\t\t\t\t\t Research and Development Services</string>
-    <string name="au_contact_us"><b>Contact Us:</b>Jemuel Balingbing\n\t\t\t\t\t\t\t jemuelbim20@gmail.com\n\n\t\t\t\t\t\t\t Roberto Bonifacio Jr,\n\t\t\t\t\t\t\t berttsss@gmail.com\n\n\t\t\t\t\t\t\t Anthony Deco\n\t\t\t\t\t\t\t anthonydeco322@gmail.com\n\n\t\t\t\t\t\t\t Dir. Renato Bituonan\n\t\t\t\t\t\t\t rbituonan@yahoo.com</string>
+    <string name="au_coders"><b>Coders:</b>
+        \n\t\t\t\t\t\t\t\t\t Jemuel Torres Balingbing
+        \n\t\t\t\t\t\t\t\t\t (User Interface and Front-End)
+        \n\n\t\t\t\t\t\t\t\t\t Roberto Gantang Bonifacio Jr,
+        \n\t\t\t\t\t\t\t\t\t (Server-side Scripting)
+        \n\n\t\t\t\t\t\t\t\t\t Anthony Matthew Lolarga Deco
+        \n\t\t\t\t\t\t\t\t\t (Backend and Data Handling)</string>
+    <string name="au_adviser"><b>Adviser:</b>
+        \n\t\t\t\t\t\t\t\t Dir. Renato Butch Bituonan, University
+        \n\t\t\t\t\t\t\t\t Research and Development Services</string>
+    <string name="au_contact_us"><b>Contact Us:</b>
+        \n\n\t\t\t\t\t\t\t\t\t\t Jemuel Balingbing
+        \n\t\t\t\t\t\t\t\t\t\t jemuelbim20@gmail.com
+        \n\n\t\t\t\t\t\t\t\t\t\t Roberto Bonifacio Jr,
+        \n\t\t\t\t\t\t\t\t\t\t berttsss@gmail.com
+        \n\n\t\t\t\t\t\t\t\t\t\t Anthony Deco
+        \n\t\t\t\t\t\t\t\t\t\t anthonydeco322@gmail.com
+        \n\n\t\t\t\t\t\t\t\t\t\t Dir. Renato Bituonan
+        \n\t\t\t\t\t\t\t\t\t\t rbituonan@yahoo.com</string>
 
     <!-- Fragment Add Item strings-->
     <string name="ai_productname">Product Name</string>

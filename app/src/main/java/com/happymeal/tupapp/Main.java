@@ -9,6 +9,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -272,6 +273,8 @@ public class Main extends AppCompatActivity
             ).commit();
         } else if (id == R.id.nav_logout)
         {
+            SharedPreferences credentials = getSharedPreferences("credentials",MODE_PRIVATE);
+            SharedPreferences profile = getSharedPreferences("profile",MODE_PRIVATE);
             /*
             if(ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -316,6 +319,8 @@ public class Main extends AppCompatActivity
                 }
             }*/
 
+            credentials.edit().clear().apply();
+            profile.edit().clear().apply();
             Intent logout = new Intent(getApplicationContext(), Login.class);
             username = "";
             password = "";
@@ -329,12 +334,14 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(String data) {
+    public void onFragmentInteraction(String data)
+    {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
     }
 
     /** Checks for internet connection */
-    private boolean isNetworkAvailable() {
+    private boolean isNetworkAvailable()
+    {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
