@@ -30,8 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kosalgeek.android.caching.FileCacher;
-
 import org.json.JSONObject;
 
 import java.io.File;
@@ -184,15 +182,18 @@ public class MyDashboardFragment extends Fragment {
     }
 
     public void goSellItem(){
+        /*
         AddItemFragment addItemFragment = AddItemFragment.newInstance(mParam1,"My Dashboard");
         FragmentManager manager = getActivity().getSupportFragmentManager();
         manager.beginTransaction().add(R.id.relativelayout_for_fragment,
                 addItemFragment,
                 addItemFragment.getTag()
         ).commit();
+        */
+
     }
     public void goBrowseItem(){
-        if (isNetworkAvailable()) {
+        /*if (isNetworkAvailable()) {
             EcsFragment ecsFragment = EcsFragment.newInstance(mParam1);
             FragmentManager manager = getActivity().getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
@@ -203,6 +204,7 @@ public class MyDashboardFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Lost internet connection!", Toast.LENGTH_LONG).show();
         }
+        */
     }
     public void goCalendar(){
         startActivity(new Intent (Intent.ACTION_VIEW, Uri.parse ("content://com.android.calendar/time/")));
@@ -283,13 +285,13 @@ public class MyDashboardFragment extends Fragment {
     }
     /** Gets student's profile from file profile.txt */
     private void profile_retrieve_offline(){
-        FileCacher<String> profilecache = new FileCacher<>(getContext(),"profile.txt");
+        /*FileCacher<String> profilecache = new FileCacher<>(getContext(),"profile.txt");
         String[] f;
         String[] f2;
         JSONObject jObject;
         String fname, lname, initial, course,string="",a="";
-        /*TextView pname = (TextView) findViewById(R.id.p_name);
-        TextView pcourse = (TextView) findViewById(R.id.p_course);*/
+        //TextView pname = (TextView) findViewById(R.id.p_name);
+        //TextView pcourse = (TextView) findViewById(R.id.p_course);
 
         try {
             string = profilecache.readCache();
@@ -329,8 +331,9 @@ public class MyDashboardFragment extends Fragment {
 
         dashboard_greet.setText(greettime);
         dashboard_name.setText(greetname);
-                /*TextView gr = (TextView) findViewById(R.id.greet);
-                gr.setText(greettime + " " + greetname + '!');*/
+        //TextView gr = (TextView) findViewById(R.id.greet);
+        //gr.setText(greettime + " " + greetname + '!');
         //Toast.makeText(getContext(),greettime + greetname + '!',Toast.LENGTH_SHORT).show();
+        */
     }
 }

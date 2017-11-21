@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.amigold.fundapter.BindDictionary;
 import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
-import com.kosalgeek.android.caching.FileCacher;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -318,7 +317,7 @@ public class MyGradesFragment extends Fragment {
 
     /** Gets student's current grades offline from cache(fixed for now)*/
     private void grades_retrieve_offline(){
-        String result="";
+      /*  String result="";
         FileCacher<String> grades = new FileCacher<>(getContext(),"grades.txt");
         try {
             result= grades.readCache();
@@ -335,7 +334,7 @@ public class MyGradesFragment extends Fragment {
             JSONArray student = jObject.getJSONArray("student");
             try {
                 for (int i = 0; i < student.length(); i++) {
-                    /** Translating Json Object to schedule*/
+                    //Translating Json Object to schedule
                     jsonObject = student.getJSONObject(i);
                     subcode = jsonObject.getString("subcode");
                     sd = jsonObject.getString("subdes");
@@ -368,7 +367,7 @@ public class MyGradesFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(getContext(), "Error fetching grades", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     public interface OnFragmentInteractionListener {

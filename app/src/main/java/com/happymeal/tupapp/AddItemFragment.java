@@ -30,7 +30,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.kosalgeek.android.caching.FileCacher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -158,7 +157,7 @@ public class AddItemFragment extends Fragment {
                         Toast.makeText(getContext(), "Enter a valid contact number!", Toast.LENGTH_LONG).show();
                     }else {
                         if (isNetworkAvailable()) {
-                            FileCacher<String> profilecache = new FileCacher<>(getContext(),"profile.txt");
+                            /*FileCacher<String> profilecache = new FileCacher<>(getContext(),"profile.txt");
                             String string="",a,b;
                             String[] f2,arr;
 
@@ -188,6 +187,7 @@ public class AddItemFragment extends Fragment {
                             String dc = description.getText().toString();
                             String sl = a + b;
                             new add_item().execute("https://tupapp.000webhostapp.com/index.php/Welcome/AddItem/" + mParam1 + "/" + ct + "/" + sct + "/" + nm + "/" + pr + "/" + co + "/" + dc+ "/"+sl+"/selling");
+                        */
                         } else {
                             Toast.makeText(getContext(), "Lost internet connection!", Toast.LENGTH_LONG).show();
                         }

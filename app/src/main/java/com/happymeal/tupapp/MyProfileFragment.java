@@ -21,8 +21,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kosalgeek.android.caching.FileCacher;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -122,7 +120,6 @@ public class MyProfileFragment extends Fragment {
 
 
     public void retrieve_profile_offline(){
-        FileCacher<String> profilecache = new FileCacher<>(getContext(), "profile.txt");
         String fname,lname,bplace,cstatus,religion,bmonth, query="";
         String[] array, b;
         ContentValues student = new ContentValues();
@@ -139,6 +136,7 @@ public class MyProfileFragment extends Fragment {
         TextView phasgrad = (TextView) getActivity().findViewById(R.id.tvpHGrad);
         TextView pemail = (TextView) getActivity().findViewById(R.id.tvpEmail);
         TextView ppass = (TextView) getActivity().findViewById(R.id.tvpPassword);
+        /*FileCacher<String> profilecache = new FileCacher<>(getContext(), "profile.txt");
         try {
             query = profilecache.readCache();
         } catch (IOException e) {
@@ -230,7 +228,7 @@ public class MyProfileFragment extends Fragment {
             }else {
                 Toast.makeText(getContext(), "No internet connection!", Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
     }
 
     /** Retrieves student's profile and writes to file profile.txt if possible */
@@ -322,7 +320,7 @@ public class MyProfileFragment extends Fragment {
                 if(ActivityCompat.checkSelfPermission(getActivity(),
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
-                    FileCacher<String> profile = new FileCacher<>(getContext(), "profile.txt");
+                    /*FileCacher<String> profile = new FileCacher<>(getContext(), "profile.txt");
                     try {
                         profile.writeCache(mParam1 +','+ mParam2+','+ data.getAsString("fname") +','+
                                 data.getAsString("lname")    +','+ data.getAsString("initial") +','+
@@ -335,7 +333,7 @@ public class MyProfileFragment extends Fragment {
                                 data.getAsString("religion") +','+ data.getAsString("college"));
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                 }
                 TextView pname = (TextView) getActivity().findViewById(R.id.tvpName);
                 TextView pbdate = (TextView) getActivity().findViewById(R.id.tvpBdate);

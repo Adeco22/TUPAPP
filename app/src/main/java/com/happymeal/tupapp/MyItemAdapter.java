@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kosalgeek.android.caching.FileCacher;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -46,15 +44,14 @@ public class MyItemAdapter extends RecyclerView.Adapter<MyItemAdapter.MyViewHold
             int position = getAdapterPosition();
             Product product = this.products.get(position);
             Intent i = new Intent(this.mContext, MyItemDetails.class);
-            FileCacher<String> profilecache = new FileCacher<>(mContext,"profile.txt");
             String string="";
             String[] f2;
-
+            /*FileCacher<String> profilecache = new FileCacher<>(mContext,"profile.txt");
             try {
                 string = profilecache.readCache();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
             f2 = string.split(",");
             // i.putExtra("clicked_img", touristSpots.getTs_thumbnail_id());
             i.putExtra("id", product.getId());

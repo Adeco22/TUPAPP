@@ -26,7 +26,6 @@ import android.widget.Toolbar;
 import com.amigold.fundapter.BindDictionary;
 import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
-import com.kosalgeek.android.caching.FileCacher;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,7 +91,7 @@ public class MyScheduleFragment extends Fragment {
             if (ActivityCompat.checkSelfPermission(getActivity(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                FileCacher<String> schedule = new FileCacher<>(getContext(), "schedule.txt");
+                /*FileCacher<String> schedule = new FileCacher<>(getContext(), "schedule.txt");
                 String a = "";
                 try {
                     a = schedule.readCache();
@@ -107,8 +106,7 @@ public class MyScheduleFragment extends Fragment {
                     }
                 } else {
                     schedule_retrieve_offline();
-                }
-
+                }*/
             } else {
                 if (isNetworkAvailable()) {
                     new schedule_retrieve_online().execute("https://tupapp.000webhostapp.com/index.php/Welcome/getschedule");
@@ -258,12 +256,13 @@ public class MyScheduleFragment extends Fragment {
             if(ActivityCompat.checkSelfPermission(getActivity(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                FileCacher<String> schedule = new FileCacher<>(getContext(), "schedule.txt");
+                /*FileCacher<String> schedule = new FileCacher<>(getContext(), "schedule.txt");
                 try {
                     schedule.writeCache(result);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                */
             }
             String ccode,ct,ctitle,room,day,time;
             JSONArray jArray;
@@ -312,7 +311,7 @@ public class MyScheduleFragment extends Fragment {
         JSONArray jArray;
         JSONObject jsonObject,jObject;
         Schedule sched;
-        FileCacher<String> schedule = new FileCacher<>(getContext(),"schedule.txt");
+        /*FileCacher<String> schedule = new FileCacher<>(getContext(),"schedule.txt");
         try {
             try {
                 result = schedule.readCache();
@@ -326,7 +325,7 @@ public class MyScheduleFragment extends Fragment {
                 jArray = jObject.getJSONArray("query");
                 try {
                     for (int i = 0; i < jArray.length(); i++) {
-                        /** Translating Json Object to schedule*/
+                        // Translating Json Object to schedule
                         jsonObject = jArray.getJSONObject(i);
                         ccode = jsonObject.getString("course_code");
                         ct = jsonObject.getString("course_title");
@@ -351,7 +350,7 @@ public class MyScheduleFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(getContext(), "Can't fetch data, try again later", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     /** Checks for internet connection */
@@ -362,7 +361,7 @@ public class MyScheduleFragment extends Fragment {
     }
 
     private void clearschedule(){
-        FileCacher<String> eventcache = new FileCacher<>(getContext(), "events.txt");
+        /*FileCacher<String> eventcache = new FileCacher<>(getContext(), "events.txt");
         String a = "";
         String[] b;
         try {
@@ -380,7 +379,7 @@ public class MyScheduleFragment extends Fragment {
                     DeleteEvent(Integer.parseInt(aB));
                 }
             }
-        }
+        }*/
     }
 
     public void DeleteEvent(int your_event_id){

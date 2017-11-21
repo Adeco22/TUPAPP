@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.github.amigold.fundapter:library-1.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.aar/6385047244e77162d55fc1634cda9386/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.aar/6385047244e77162d55fc1634cda9386/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.aar/e38f5f579820d2e89074cc229e1a650c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.aar/e38f5f579820d2e89074cc229e1a650c/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

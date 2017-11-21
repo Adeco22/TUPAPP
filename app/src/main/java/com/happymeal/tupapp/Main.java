@@ -4,6 +4,7 @@ package com.happymeal.tupapp;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DownloadManager;
+
 import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.Context;
@@ -11,14 +12,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+
 import android.database.Cursor;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+
 import android.provider.CalendarContract;
+
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -27,17 +34,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
+
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kosalgeek.android.caching.FileCacher;
-
 import java.io.File;
-import java.io.IOException;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -143,29 +150,7 @@ public class Main extends AppCompatActivity
                 startActivity(pdfOpenintent);
             }
         };
-        if (id == R.id.nav_my_schedule)
-        {
-            MyScheduleFragment myScheduleFragment = MyScheduleFragment.newInstance(username, password);
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
-                    myScheduleFragment,
-                    myScheduleFragment.getTag()
-            ).commit();
-        } else if (id == R.id.nav_ecs)
-        {
-            if (isNetworkAvailable())
-            {
-                EcsFragment ecsFragment = EcsFragment.newInstance(username);
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
-                        ecsFragment,
-                        ecsFragment.getTag()
-                ).commit();
-            }else
-            {
-                showToast("No internet connection!",false);
-            }
-        }else if (id == R.id.nav_my_dashboard)
+        if (id == R.id.nav_my_dashboard)
         {
             MyDashboardFragment myDashboardFragment = MyDashboardFragment.newInstance(username,password);
             FragmentManager manager = getSupportFragmentManager();
@@ -173,15 +158,17 @@ public class Main extends AppCompatActivity
                     myDashboardFragment,
                     myDashboardFragment.getTag()
             ).commit();
-        }else if (id == R.id.nav_my_account)
+        }
+        else if (id == R.id.nav_my_schedule)
         {
-            MyProfileFragment profileFragment = MyProfileFragment.newInstance(username,password);
+            MyScheduleFragment myScheduleFragment = MyScheduleFragment.newInstance(username, password);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
-                    profileFragment,
-                    profileFragment.getTag()
+                    myScheduleFragment,
+                    myScheduleFragment.getTag()
             ).commit();
-        }else if (id == R.id.nav_my_grades)
+        }
+        else if (id == R.id.nav_my_grades)
         {
             if(isNetworkAvailable())
             {
@@ -195,8 +182,36 @@ public class Main extends AppCompatActivity
             {
                 showToast("No internet connection!",false);
             }
-        } else if (id == R.id.nav_myi)
+        }
+        else if (id == R.id.nav_my_account)
         {
+            MyProfileFragment profileFragment = MyProfileFragment.newInstance(username, password);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
+                    profileFragment,
+                    profileFragment.getTag()
+            ).commit();
+        }
+        else if (id == R.id.nav_ecs)
+        {/*
+            if (isNetworkAvailable())
+            {
+                EcsFragment ecsFragment = EcsFragment.newInstance(username);
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment,
+                        ecsFragment,
+                        ecsFragment.getTag()
+                ).commit();
+            }else
+            {
+                showToast("No internet connection!",false);
+            }
+           */
+            showToast("Feature disabled",false);
+        }
+        else if (id == R.id.nav_myi)
+        {
+            /*
             if(isNetworkAvailable())
             {
                 MyItemFragment myItemFragment = MyItemFragment.newInstance(username);
@@ -209,7 +224,10 @@ public class Main extends AppCompatActivity
             {
                 showToast("No internet connection!",false);
             }
-        }else if (id == R.id.nav_student_handbook)
+            */
+            showToast("Feature disabled",false);
+        }
+        else if (id == R.id.nav_student_handbook)
         {
                 try
                 {
@@ -263,7 +281,8 @@ public class Main extends AppCompatActivity
                     ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                             Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
                 }
-        } else if (id == R.id.nav_about_us)
+        }
+        else if (id == R.id.nav_about_us)
         {
             AboutUsFragment aboutUsFragment = AboutUsFragment.newInstance("Welcome", "HappyMeal");
             FragmentManager manager = getSupportFragmentManager();
@@ -271,56 +290,14 @@ public class Main extends AppCompatActivity
                     aboutUsFragment,
                     aboutUsFragment.getTag()
             ).commit();
-        } else if (id == R.id.nav_logout)
+        }
+        else if (id == R.id.nav_logout)
         {
             SharedPreferences credentials = getSharedPreferences("credentials",MODE_PRIVATE);
             SharedPreferences profile = getSharedPreferences("profile",MODE_PRIVATE);
-            /*
-            if(ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED)
-            {
-                FileCacher<String> profilecache = new FileCacher<>(getApplicationContext(), "profile.txt");
-                FileCacher<String> schedulecache = new FileCacher<>(getApplicationContext(), "schedule.txt");
-                FileCacher<String> eventcache = new FileCacher<>(getApplicationContext(), "events.txt");
-                FileCacher<String> gradecache = new FileCacher<>(getApplicationContext(), "grades.txt");
-                String a = "";
-                String[] b;
-                try
-                {
-                    a = eventcache.readCache();
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                if(ActivityCompat.checkSelfPermission(this,
-                        Manifest.permission.WRITE_CALENDAR)
-                        == PackageManager.PERMISSION_GRANTED)
-                {
-                    if (!(a.equals("")))
-                    {
-                        b = a.split(",");
-                        for (String aB : b)
-                        {
-                            aB = aB.replace(" ", "");
-                            DeleteEvent(Integer.parseInt(aB));
-                        }
-                    }
-                }
-                try
-                {
-                    profilecache.clearCache();
-                    schedulecache.clearCache();
-                    gradecache.clearCache();
-                    eventcache.clearCache();
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }*/
-
             credentials.edit().clear().apply();
             profile.edit().clear().apply();
+
             Intent logout = new Intent(getApplicationContext(), Login.class);
             username = "";
             password = "";
@@ -348,7 +325,7 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults)
     {
         switch (requestCode)
         {
@@ -375,7 +352,7 @@ public class Main extends AppCompatActivity
 
     public void setprofile(String name, String course)
     {
-        String full="";
+        StringBuilder full= new StringBuilder();
         String[] a;
         TextView pname = (TextView) findViewById(R.id.p_name);
         TextView pcourse = (TextView) findViewById(R.id.p_course);
@@ -384,13 +361,11 @@ public class Main extends AppCompatActivity
         a = name.split(" ");
         for (String aB : a)
         {
-            full += aB.substring(0, 1).toUpperCase() + aB.substring(1).toLowerCase();
-            full += " ";
+            full.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase()).append(" ");
         }
         pidno.setText(username);
-        pname.setText(full);
+        pname.setText(full.toString());
         pcourse.setText(course);
-        //Toast.makeText(getApplicationContext(), username + full + course, Toast.LENGTH_LONG).show();
     }
 
     private void showToast(String message, Boolean isLong)

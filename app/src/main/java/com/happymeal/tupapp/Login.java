@@ -2,29 +2,44 @@ package com.happymeal.tupapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+
 import android.database.sqlite.SQLiteException;
+
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.ParseException;
+import android.net.Uri;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.provider.CalendarContract;
+
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+
 import android.text.InputFilter;
 import android.text.Spanned;
+
+import android.util.Log;
+
+import android.view.inputmethod.EditorInfo;
+import android.view.KeyEvent;
 import android.view.View;
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.*;
-import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,20 +49,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.TimeZone;
 
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
-import com.kosalgeek.android.caching.FileCacher;
+
 
 public class Login extends AppCompatActivity {
 
@@ -63,39 +78,12 @@ public class Login extends AppCompatActivity {
         Intent in = new Intent(getApplicationContext(),Splash.class);
         startActivity(in);
         setContentView(R.layout.log_in_page);
+        initialization();
+    }
 
-        InputFilter filter = new InputFilter() {
-            EditText pass = (EditText)findViewById(R.id.studPass);
-            boolean canEnterSpace = false;
-            public CharSequence filter(CharSequence source, int start, int end,
-                                       Spanned dest, int dstart, int dend) {
-                if(pass.getText().toString().equals(""))
-                {
-                    canEnterSpace = false;
-                }
-                StringBuilder builder = new StringBuilder();
-
-                for (int i = start; i < end; i++) {
-                    char currentChar = source.charAt(i);
-
-                    if (Character.isLetterOrDigit(currentChar) || currentChar == '_') {
-                        builder.append(currentChar);
-                        canEnterSpace = true;
-                    }
-
-                    if(Character.isWhitespace(currentChar) && canEnterSpace) {
-                        builder.append(currentChar);
-                    }
-                }
-                return builder.toString();
-            }
-        };
-
-        EditText pass = (EditText) findViewById(R.id.studPass);
-        pass.setFilters(new InputFilter[]{filter});
-
-
-        // Else initializes the login screen
+    /** Checks if there is an active account, otherwise, initializes the login screen  */
+    private void initialization()
+    {
         if(ReLogin())
         {
             String name, fname, initial, lname, course;
@@ -122,6 +110,20 @@ public class Login extends AppCompatActivity {
         }
         else
         {
+            InputFilter filter = new InputFilter() {
+                public CharSequence filter(CharSequence source, int start, int end,
+                                           Spanned dest, int dstart, int dend) {
+                    for (int i = start; i < end; i++) {
+                        if (Character.isWhitespace(source.charAt(i))) {
+                            return "";
+                        }
+                    }
+                    return null;
+                }
+            };
+            EditText pass = (EditText) findViewById(R.id.studPass);
+            pass.setFilters(new InputFilter[]{filter});
+
             if (ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -148,7 +150,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    /** Action where the user logs in */
+    /** Checks for constraints when the user initializes to sign in */
     private void Login_action(EditText pass){
         final EditText user = (EditText) findViewById(R.id.studID);
         username = user.getText().toString();
@@ -264,7 +266,7 @@ public class Login extends AppCompatActivity {
                         {
                             //semcheck();
                             //new schedule_retrieve().execute("https://tupapp.000webhostapp.com/index.php/Welcome/getschedule");
-            //new schedule_retrieve().execute("http://tup.edu.ph/android/mygrades/" + username + "/" + password + "/2nd%20Semester:"+ schoolyear +"-"+ (schoolyear+1));
+                            // new schedule_retrieve().execute("http://tup.edu.ph/android/mygrades/" + username + "/" + password + "/2nd%20Semester:"+ schoolyear +"-"+ (schoolyear+1));
                         }
                     }
                 }
@@ -276,7 +278,8 @@ public class Login extends AppCompatActivity {
                         pd.dismiss();
                     }
                 }
-            }catch (JSONException e)
+            }
+            catch (JSONException e)
             {
                 if (pd.isShowing())
                 {
@@ -352,7 +355,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    /**Returns Calendar Base URI, supports both new and old OS. */
+    /** Returns Calendar Base URI, supports both new and old OS. */
     private String getCalendarUriBase(boolean eventUri) {
         Uri calendarURI = null;
         try {
@@ -683,6 +686,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /** Dynamic toast that prevents long and multiple toasts from appearing */
     private void showToast(String message, Boolean isLong)
     {
         try{if(toast.getView().isShown()){toast.cancel();} }catch (NullPointerException e){toast = new Toast(getApplicationContext());}

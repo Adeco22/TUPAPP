@@ -29,8 +29,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kosalgeek.android.caching.FileCacher;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

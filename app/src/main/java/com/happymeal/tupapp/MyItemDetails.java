@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chabbal.slidingdotsplash.SlidingSplashView;
-import com.kosalgeek.android.caching.FileCacher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
