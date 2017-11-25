@@ -3,5 +3,5 @@ TUPAPP: A Handy Mobile App for TUP Students
 
 Contributors:
 - Anthony Deco
-- Jemuel Bim
+- Jemuel Balingbing
 - Roberto Boni
