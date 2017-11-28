@@ -60,7 +60,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Profile Name"
                             android:textColor="#000"
                             android:id="@+id/tvpName"
                             android:layout_alignBaseline="@+id/pName"
@@ -87,7 +86,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Birth Date"
                             android:textColor="#000"
                             android:id="@+id/tvpBdate"
                             android:layout_alignBaseline="@+id/pBDate"
@@ -114,7 +112,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Birth Place"
                             android:textColor="#000"
                             android:id="@+id/tvpBPlace"
                             android:layout_alignBaseline="@+id/pBPlace"
@@ -141,7 +138,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Address"
                             android:textColor="#000"
                             android:id="@+id/tvpAddress"
                             android:layout_marginStart="25dp"
@@ -168,7 +164,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Telephone"
                             android:textColor="#000"
                             android:id="@+id/tvpTelephone"
                             android:layout_marginStart="10dp"
@@ -195,7 +190,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Religion"
                             android:textColor="#000"
                             android:id="@+id/tvpReligion"
                             android:layout_marginStart="25dp"
@@ -223,7 +217,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Civil Status"
                         android:textColor="#000"
                         android:id="@+id/tvpCStatus"
                         android:layout_marginStart="10dp"
@@ -268,7 +261,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Username"
                             android:textColor="#000"
                             android:id="@+id/tvpUsername"
                             android:layout_alignBaseline="@+id/pUsername"
@@ -295,7 +287,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Course"
                             android:textColor="#000"
                             android:id="@+id/tvpCourse"
                             android:layout_alignBaseline="@+id/pCourse"
@@ -321,7 +312,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="COS"
                             android:textColor="#000"
                             android:id="@+id/tvpCollege"
                             android:layout_alignBaseline="@+id/pCollege"
@@ -348,7 +338,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
                             android:textColor="#000"
                             android:id="@+id/tvpHGrad"
                             android:layout_alignBaseline="@+id/pHGrad"
@@ -375,7 +364,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Email Address"
                             android:textColor="#000"
                             android:id="@+id/tvpEmail"
                             android:layout_alignBaseline="@+id/pEmail"
@@ -403,8 +391,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:text="Password"
                             android:textColor="#000"
                             android:id="@+id/tvpPassword"
                             android:layout_marginStart="50dp"

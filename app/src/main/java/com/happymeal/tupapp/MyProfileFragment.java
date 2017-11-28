@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -37,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MyProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -91,7 +93,7 @@ public class MyProfileFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        retrieve_profile_offline();
+        new profile_retrieve_online().execute("http://tup.edu.ph/android/get_studprofile/" + mParam1 + "/" + mParam2);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -120,7 +122,10 @@ public class MyProfileFragment extends Fragment {
 
 
     public void retrieve_profile_offline(){
-        String fname,lname,bplace,cstatus,religion,bmonth, query="";
+        StringBuilder fname, lname, pass;
+        String name, initial,
+                course,
+                bplace,cstatus,religion,bmonth, query="";
         String[] array, b;
         ContentValues student = new ContentValues();
         TextView pname = (TextView) getActivity().findViewById(R.id.tvpName);
@@ -136,6 +141,46 @@ public class MyProfileFragment extends Fragment {
         TextView phasgrad = (TextView) getActivity().findViewById(R.id.tvpHGrad);
         TextView pemail = (TextView) getActivity().findViewById(R.id.tvpEmail);
         TextView ppass = (TextView) getActivity().findViewById(R.id.tvpPassword);
+        SharedPreferences profile = getActivity().getSharedPreferences("profile",Context.MODE_PRIVATE);
+        SharedPreferences credentials = getActivity().getSharedPreferences("credentials",Context.MODE_PRIVATE);
+
+        try
+        {
+            initial = profile.getString("initial",null);
+            course  = profile.getString("course",null);
+
+            fname = new StringBuilder(profile.getString("fname",null));
+            b = fname.toString().split(" ");
+            fname = new StringBuilder();
+            for (String aB : b) {
+                fname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase());
+                fname.append(" ");
+            }
+
+            lname = new StringBuilder(profile.getString("lname",""));
+            b = lname.toString().split(" ");
+            lname = new StringBuilder();
+            for (String aB : b) {
+                lname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase()).append(" ");
+            }
+
+            name = fname + initial+ "." +" "+ lname;
+            pass = new StringBuilder("");
+            for(int a=0; a < mParam2.length(); a++)
+            {
+                pass.append("**");
+            }
+
+            pname.setText(name);
+            pcourse.setText(course);
+            pusername.setText(mParam1);
+            ppass.setText(pass);
+        }
+        catch (NullPointerException el)
+        {
+            el.printStackTrace();
+
+        }
         /*FileCacher<String> profilecache = new FileCacher<>(getContext(), "profile.txt");
         try {
             query = profilecache.readCache();
@@ -286,8 +331,27 @@ public class MyProfileFragment extends Fragment {
             super.onPostExecute(result);
             JSONObject jObject;
             ContentValues data = new ContentValues();
-            String fname,lname,bplace,cstatus,religion,bmonth, query="";
+            StringBuilder fname;
+            StringBuilder lname;
+            String bplace;
+            String cstatus;
+            String religion;
+            String bmonth;
+            String query="";
             String[] array, b;
+            TextView pname = (TextView) getActivity().findViewById(R.id.tvpName);
+            TextView pbdate = (TextView) getActivity().findViewById(R.id.tvpBdate);
+            TextView pbplace = (TextView) getActivity().findViewById(R.id.tvpBPlace);
+            TextView paddress = (TextView) getActivity().findViewById(R.id.tvpAddress);
+            TextView ptelephone = (TextView) getActivity().findViewById(R.id.tvpTelephone);
+            TextView preligion = (TextView) getActivity().findViewById(R.id.tvpReligion);
+            TextView pcivil = (TextView) getActivity().findViewById(R.id.tvpCStatus);
+            TextView pusername = (TextView) getActivity().findViewById(R.id.tvpUsername);
+            TextView pcourse = (TextView) getActivity().findViewById(R.id.tvpCourse);
+            TextView pcollege = (TextView) getActivity().findViewById(R.id.tvpCollege);
+            TextView phasgrad = (TextView) getActivity().findViewById(R.id.tvpHGrad);
+            TextView pemail = (TextView) getActivity().findViewById(R.id.tvpEmail);
+            TextView ppass = (TextView) getActivity().findViewById(R.id.tvpPassword);
 
             try {
                 jObject = new JSONObject(result);
@@ -335,34 +399,20 @@ public class MyProfileFragment extends Fragment {
                         e.printStackTrace();
                     }*/
                 }
-                TextView pname = (TextView) getActivity().findViewById(R.id.tvpName);
-                TextView pbdate = (TextView) getActivity().findViewById(R.id.tvpBdate);
-                TextView pbplace = (TextView) getActivity().findViewById(R.id.tvpBPlace);
-                TextView paddress = (TextView) getActivity().findViewById(R.id.tvpAddress);
-                TextView ptelephone = (TextView) getActivity().findViewById(R.id.tvpTelephone);
-                TextView preligion = (TextView) getActivity().findViewById(R.id.tvpReligion);
-                TextView pcivil = (TextView) getActivity().findViewById(R.id.tvpCStatus);
-                TextView pusername = (TextView) getActivity().findViewById(R.id.tvpUsername);
-                TextView pcourse = (TextView) getActivity().findViewById(R.id.tvpCourse);
-                TextView pcollege = (TextView) getActivity().findViewById(R.id.tvpCollege);
-                TextView phasgrad = (TextView) getActivity().findViewById(R.id.tvpHGrad);
-                TextView pemail = (TextView) getActivity().findViewById(R.id.tvpEmail);
-                TextView ppass = (TextView) getActivity().findViewById(R.id.tvpPassword);
 
-
-                fname =data.getAsString("fname");
-                b = fname.split(" ");
-                fname = "";
+                fname = new StringBuilder(data.getAsString("fname"));
+                b = fname.toString().split(" ");
+                fname = new StringBuilder();
                 for (String aB : b) {
-                    fname += aB.substring(0, 1).toUpperCase() + aB.substring(1).toLowerCase();
-                    fname += " ";
+                    fname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase());
+                    fname.append(" ");
                 }
 
-                lname = data.getAsString("lname");
-                b = lname.split(" ");
-                lname = "";
+                lname = new StringBuilder(data.getAsString("lname"));
+                b = lname.toString().split(" ");
+                lname = new StringBuilder();
                 for (String aB : b) {
-                    lname += aB.substring(0, 1).toUpperCase() + aB.substring(1).toLowerCase()+" ";
+                    lname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase()).append(" ");
                 }
 
                 bplace = data.getAsString("bplace");
@@ -421,11 +471,60 @@ public class MyProfileFragment extends Fragment {
                     pd.dismiss();
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(getContext(), "No record found!", Toast.LENGTH_SHORT).show();
-                if (pd.isShowing()) {
-                    pd.dismiss();
+
+                try
+                {
+                    jObject = new JSONObject(result);
+                    JSONArray student = jObject.getJSONArray("student");
+                    JSONObject st = student.getJSONObject(0);
+
+                    String name;
+                    String initial;
+                    String course;
+                    StringBuilder pass = new StringBuilder();
+
+                    course = st.getString("course");
+                    data.put("fname",st.getString("fname"));
+                    data.put("lname",st.getString("lname"));
+                    initial = st.getString("initial");
+
+                    fname = new StringBuilder(data.getAsString("fname"));
+                    b = fname.toString().split(" ");
+                    fname = new StringBuilder();
+                    for (String aB : b) {
+                        fname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase());
+                        fname.append(" ");
+                    }
+
+                    lname = new StringBuilder(data.getAsString("lname"));
+                    b = lname.toString().split(" ");
+                    lname = new StringBuilder();
+                    for (String aB : b) {
+                        lname.append(aB.substring(0, 1).toUpperCase()).append(aB.substring(1).toLowerCase()).append(" ");
+                    }
+
+                    name = fname + initial+ "." +" "+ lname;
+
+                    for(int a=0; a < mParam2.length(); a++)
+                    {
+                        pass.append("**");
+                    }
+
+                    pname.setText(name);
+                    pcourse.setText(course);
+                    pusername.setText(mParam1);
+                    ppass.setText(pass);
                 }
+                catch (JSONException el)
+                {
+                    el.printStackTrace();
+                    Toast.makeText(getContext(), "Server Error, try again later", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+            if (pd.isShowing()) {
+                pd.dismiss();
             }
         }
     }
